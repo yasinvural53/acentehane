@@ -1,18 +1,71 @@
-:root {
-  --background: #f7f5ef;
-  --foreground: #243d35;
-  color-scheme: light;
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f5f2ff;
+  --color-brand-100: #ede7fc;
+  --color-brand-200: #d9ccf7;
+  --color-brand-500: #8961d7;
+  --color-brand-600: #7043c1;
+  --color-brand-700: #5c34a5;
+  --color-ink: #29243b;
+  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
-* { box-sizing: border-box; }
-html { scroll-padding-top: 24px; }
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  body {
+    margin: 0;
+    background: #f8f9fc;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  button,
+  a,
+  input,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:not(:disabled),
+  select {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid #8961d7;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: #e9dfff;
+    color: #3b2269;
+  }
+  dialog::backdrop {
+    background: #21133460;
+    backdrop-filter: blur(3px);
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
 }
-a { color: inherit; }
-a:focus-visible { outline: 3px solid #a04426; outline-offset: 6px; }
-::selection { background: #dbe7b7; color: #243d35; }
+
+@layer components {
+  .field-control {
+    @apply mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-ink transition focus:border-brand-500;
+  }
+  .panel-card {
+    @apply rounded-xl border border-slate-200/80 bg-white shadow-[0_2px_4px_0_rgb(25_20_45/0.02)];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Acentehane | Yeni bir başlangıç",
-  description: "Acentehane’ye hoş geldiniz. Yeni bir başlangıç için hazırlanıyoruz.",
+  title: "AcenteHane | Sigorta Acenteleri İçin Dijital Yönetim",
+  description: "AcenteHane, sigorta acenteleri için müşteri, poliçe, teklif ve yenileme süreçlerini tek merkezde yönetmeye yönelik geliştirilen dijital platformdur.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

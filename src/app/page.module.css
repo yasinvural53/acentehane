@@ -1,0 +1,44 @@
+.page { max-width: 1440px; min-height: 100svh; margin: auto; padding: 0 7%; }
+.skipLink { position: absolute; top: 12px; left: 12px; z-index: 1; padding: 12px; background: white; transform: translateY(-200%); }
+.skipLink:focus { transform: translateY(0); }
+.header { min-height: 116px; display: flex; justify-content: space-between; align-items: center; gap: 24px; border-bottom: 1px solid #d6dcd3; }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 25px; font-weight: 700; letter-spacing: -1px; }
+.mark { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px 12px 3px 3px; background: #243d35; color: #f7f5ef; font-family: Georgia, serif; font-size: 28px; }
+.status { font-size: 12px; text-transform: uppercase; letter-spacing: 1.4px; }
+.status::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 10px; border-radius: 50%; background: #65813a; }
+.main { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; padding: 80px 0 48px; align-items: center; }
+.eyebrow { margin: 0 0 28px; font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+.intro h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: clamp(42px, 5.1vw, 72px); line-height: 1.08; letter-spacing: -2.5px; }
+.description { max-width: 350px; margin: 26px 0 32px; color: #53645a; font-size: 17px; line-height: 1.7; }
+.link { display: inline-flex; align-items: center; gap: 32px; border-bottom: 1px solid #243d35; padding: 10px 0; font-size: 14px; font-weight: 600; text-decoration: none; }
+.link:hover { color: #a04426; border-color: #a04426; }
+.link span { font-size: 22px; }
+.art { min-height: 420px; padding: 44px 32px 28px; background: #e6e9da; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 32px; }
+.arch { width: 76%; max-width: 245px; height: 300px; background: #244d3e; border-radius: 140px 140px 0 0; box-shadow: 18px 14px 0 #cbd2bd; display: grid; place-items: center; }
+.arch span { font-family: Georgia, "Times New Roman", serif; font-size: 170px; line-height: 1; color: #e0e8b9; letter-spacing: -16px; padding-right: 16px; }
+.artLabel { font-size: 9px; letter-spacing: 1.4px; text-align: center; line-height: 1.7; }
+.note { grid-column: 1 / -1; display: flex; gap: 28px; align-items: flex-start; padding: 32px 0; border-top: 1px solid #d6dcd3; scroll-margin-top: 32px; }
+.noteNumber { padding-top: 3px; font-size: 12px; color: #53645a; white-space: nowrap; }
+.note h2 { margin: 0 0 10px; font-size: 18px; font-weight: 500; }
+.note p { max-width: 520px; margin: 0; font-size: 14px; color: #53645a; line-height: 1.7; }
+.noteSymbol { margin-left: auto; font-size: 46px; color: #a04426; line-height: 1; }
+.footer { padding: 24px 0; border-top: 1px solid #d6dcd3; display: flex; justify-content: space-between; gap: 20px; font-size: 11px; color: #53645a; }
+
+@media (max-width: 760px) {
+  .page { padding: 0 6%; }
+  .header { min-height: 90px; }
+  .status { font-size: 9px; letter-spacing: 0.5px; }
+  .brand { font-size: 21px; gap: 8px; }
+  .main { grid-template-columns: 1fr; padding-top: 52px; gap: 44px; }
+  .intro h1 { letter-spacing: -1.5px; }
+  .art { min-height: 340px; }
+  .arch { width: 200px; height: 240px; }
+  .arch span { font-size: 135px; }
+  .note { gap: 16px; }
+  .noteSymbol { font-size: 30px; }
+}
+
+@media (max-width: 380px) {
+  .status { display: none; }
+  .noteSymbol { display: none; }
+}

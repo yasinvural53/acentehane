@@ -7,6 +7,7 @@ export default defineConfig({
   workers: process.env.CI ? 2 : 4,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
+    actionTimeout: 10000,
     baseURL: "http://127.0.0.1:3100",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",

@@ -153,7 +153,7 @@ test("report period and settings use shared data", async ({ page }) => {
   );
   await navigate(page, "Genel Bakış");
   await expect(
-    page.getByText("önümüzdeki 7 gün", { exact: false }),
+    page.getByText("Önümüzdeki 7 gün · örnek tarih", { exact: true }),
   ).toBeVisible();
 });
 test("CSV export, empty search and pagination", async ({ page }) => {

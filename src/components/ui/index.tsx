@@ -1,10 +1,13 @@
 "use client";
 import {
+  cloneElement,
   useEffect,
+  useId,
   useRef,
   useState,
   type ButtonHTMLAttributes,
   type ReactNode,
+  type ReactElement,
 } from "react";
 import {
   ArrowDownToLine,
@@ -139,19 +142,26 @@ export function Field({
   hint,
 }: {
   label: string;
-  children: ReactNode;
+  children: ReactElement<{ id?: string; "aria-describedby"?: string }>;
   hint?: string;
 }) {
+  const id = useId();
   return (
-    <label className="block text-sm font-medium text-slate-700">
-      <span>{label}</span>
-      {children}
+    <div className="block text-sm font-medium text-slate-700">
+      <label htmlFor={id}>{label}</label>
+      {cloneElement(children, {
+        id,
+        "aria-describedby": hint ? `${id}-hint` : undefined,
+      })}
       {hint && (
-        <span className="mt-1.5 block text-xs font-normal text-slate-500">
+        <span
+          id={`${id}-hint`}
+          className="mt-1.5 block text-xs font-normal text-slate-500"
+        >
           {hint}
         </span>
       )}
-    </label>
+    </div>
   );
 }
 export function Notice({ children }: { children: ReactNode }) {

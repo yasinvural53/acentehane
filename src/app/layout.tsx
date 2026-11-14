@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AcenteHane | Sigorta Acenteleri İçin Dijital Yönetim",
-  description: "AcenteHane, sigorta acenteleri için müşteri, poliçe, teklif ve yenileme süreçlerini tek merkezde yönetmeye yönelik geliştirilen dijital platformdur.",
+  description:
+    "AcenteHane, sigorta acenteleri için müşteri, poliçe, teklif ve yenileme süreçlerini tek merkezde yönetmeye yönelik geliştirilen dijital platformdur.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

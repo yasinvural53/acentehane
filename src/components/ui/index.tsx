@@ -211,7 +211,7 @@ export function Modal({
         if (e.target === e.currentTarget) onClose();
       }}
       aria-labelledby="dialog-title"
-      className="fixed m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-xl overflow-auto rounded-2xl border-0 bg-white p-0 text-ink shadow-xl"
+      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100dvw-2rem)] max-w-xl overflow-auto rounded-2xl border-0 bg-white p-0 text-ink shadow-xl"
     >
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-100 bg-white px-6 py-4">
         <h2 id="dialog-title" className="text-lg font-semibold">
@@ -299,7 +299,7 @@ export function DataTable<T extends { id: string }>({
         </div>
       </div>
       <div
-        className="overflow-x-auto"
+        className="w-full max-w-full overflow-x-auto [contain:inline-size]"
         tabIndex={0}
         role="region"
         aria-label={`${title} tablosu`}

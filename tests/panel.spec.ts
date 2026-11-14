@@ -19,8 +19,35 @@ async function navigate(page: Page, label: string) {
     .getByRole("link", { name: label, exact: true })
     .click();
 }
+test.afterEach(async ({ page }, testInfo) => {
+  if (testInfo.status !== testInfo.expectedStatus) {
+    console.log(
+      "Layout diagnostics",
+      await page.evaluate(() => ({
+        viewport: {
+          width: innerWidth,
+          scrollWidth: document.documentElement.scrollWidth,
+          visual: window.visualViewport?.width,
+        },
+        overflowing: Array.from(document.querySelectorAll("body *"))
+          .map((el) => {
+            const rect = el.getBoundingClientRect();
+            return {
+              tag: el.tagName,
+              class: el.className,
+              x: rect.x,
+              width: rect.width,
+              right: rect.right,
+            };
+          })
+          .filter((el) => el.width > document.documentElement.clientWidth)
+          .slice(0, 15),
+      })),
+    );
+  }
+});
 for (const [route, title] of routes) {
-  test(`${title}: route, demo notice, layout`, async ({ page }) => {
+  test(`${title}: route, demo notice, layout`, async ({ page }, testInfo) => {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
     const response = await page.goto(`/panel/${route}`);
@@ -29,11 +56,19 @@ for (const [route, title] of routes) {
       page.getByRole("heading", { level: 1, name: title, exact: true }),
     ).toBeVisible();
     await expect(page.getByText("Demo ortamı", { exact: true })).toBeVisible();
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
-      ),
-    ).toBe(true);
+    const actualWidth = await page.evaluate(
+      () => document.documentElement.scrollWidth,
+    );
+    expect(actualWidth).toBeLessThanOrEqual(page.viewportSize()!.width);
+    if (route === "" || route === "musteriler") {
+      await testInfo.attach(
+        `${route || "genel-bakis"}-${testInfo.project.name}`,
+        {
+          body: await page.screenshot({ fullPage: true }),
+          contentType: "image/png",
+        },
+      );
+    }
     expect(errors).toEqual([]);
   });
 }

@@ -33,6 +33,8 @@ npm run test:e2e
 
 Masaüstü ve mobil Chromium projelerinde toplam **38 kontrol** tanımlıdır: on ekranın açılması/taşmaması, müşteri ve poliçe ekleme, tarih doğrulama, sayfalar arası demo durum, yenileme takibi, teklif karşılaştırma, acente-şube ilişkisi, rapor filtresi, ayarlar, CSV, boş arama, sayfalama, modal kapatma ve 404.
 
+Bağımlılık denetimi (14 Kasım 2026): `npm audit --omit=dev` **0 açık** bildirdi. Tam denetimde geliştirme araçlarının `minimatch` zincirinde **7 orta önem dereceli uyarı** kaldı; `npm audit fix` uyumlu bir düzeltme uygulayamadı. Kilit dosyası korunmuştur; araç güncellemeleri takip edilmelidir.
+
 ## Ekranlar
 
 | URL                     | Çalışan demo                                        | Sonraki gerçek özellik              |

@@ -38,6 +38,13 @@ GitHub Actions bu kontrolleri üretim yayını yapmadan çalıştırır. Vercel 
 
 ## Bağlantı kontrolü
 
-İlk incelemede PR #1'de Vercel botu ve başarısız Vercel kontrolü bulundu. Bağlantı kurulduktan sonra aynı takım API'de listelendi; eski AcenteHane proje kimliği 404 döndü ve proje araması boş sonuç verdi. Ayrı bir preview projesi oluşturma denemesi 403 yetki hatasıyla reddedildi. Bu, yerel derleme hatasından ayrı bir erişim sorunudur; kesin sebebi hesap/takım erişimi doğrulanmadan belirlenemez.
+İlk incelemede PR #1'de başarısız Vercel kontrolü bulundu. Düzeltmeler ayrı geliştirme dalına gönderilince mevcut GitHub–Vercel entegrasyonu otomatik önizleme oluşturdu ve Vercel kontrolü başarılı oldu.
+
+- [Taslak PR #2](https://github.com/yasinvural53/acentehane/pull/2)
+- [Vercel önizlemesi](https://acentehane-git-feature-acenteha-8d899f-yasins-projects-04e9659a.vercel.app) — ana sayfadaki **Demo paneli aç** bağlantısı `/panel` ekranına gider.
+
+Önizleme Vercel giriş koruması altındadır. Yetkili Vercel hesabıyla giriş gerekir; otomatik canlı görsel kontrol giriş ekranında durmuştur. Ekran etkileşimleri GitHub Actions üzerinde üretim derlemesiyle doğrulanır. Herkese açık erişim bağlantısı oluşturulmadı ve erişim koruması değiştirilmedi.
+
+Vercel API proje sorguları bu oturumda 404/boş sonuç verdi; ayrı proje oluşturma 403 ile reddedildi. Buna rağmen mevcut GitHub entegrasyonunun çalıştığı doğrudan başarılı commit kontrolü ve PR önizlemesiyle doğrulandı. Yeni proje kurulması gerekmiyor.
 
 Üretim, PR birleştirme ve alan adı işlemleri bu çalışmanın otomatik adımı değildir.
